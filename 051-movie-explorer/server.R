@@ -6,9 +6,8 @@ if (FALSE) {
 }
 
 # Set up handles to database tables on app start
-db <- src_sqlite("movies.db")
-omdb <- tbl(db, "omdb")
-tomatoes <- tbl(db, "tomatoes")
+omdb <- read.csv("omdb.csv",sep = '\t')
+tomatoes <- read.csv("tomatoes.csv",sep = '\t')
 
 # Join tables, filtering out those with <10 reviews, and select specified columns
 all_movies <- inner_join(omdb, tomatoes, by = "ID") %>%
